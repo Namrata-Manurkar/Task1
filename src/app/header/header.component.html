@@ -1,0 +1,159 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-blue">
+  <ul class="navbar-nav">
+    <li class="nav-list">
+      <a class="nav-link">
+        <select class="form-control" #selectElem (change)="setNewUser(selectElem.value)">
+          <option *ngFor="let user of lUsers" [value]="user.id">
+            {{user.Name}}
+          </option>
+        </select>
+      </a>
+    </li>
+    <li class="nav-list">
+      <!-- <a class="nav-link"> -->
+      <div class="wrapper">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Search" #tbName id="tbName"
+          (keyup.enter)="showByName(tbName.value)" />
+      </div>
+      <!-- </a> -->
+    </li>
+  </ul>
+</nav>
+
+<section>
+  <div class="container header-container" *ngIf="allDetails.length !== 0">
+    <div class="col-md-8">
+      <h6>Total Results:</h6>
+
+      <div class="panel panel-primary"
+        *ngFor="let cols of allDetails | paginate: {itemsPerPage:3, currentPage: p1,totalItems: total} | orderBy:sortingName:isDesc;let i = index">
+        <br />
+        <div class="panel-body user-data">
+          <div class="row">
+
+            <div class="col-xs-10">
+              <div class="panel-border">
+                <div class="row vertical-align">
+
+                  <div class="col-xs-4">
+                    <img src="{{cols.avatar_url}}" class="rounded-circle imgDiv" alt="Profile Image">
+                  </div>
+                  <div class="col-xs-8 user-data1">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <br>
+                        <h4>{{cols.login}}</h4>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6">
+                        Profile URL:
+                      </div>
+                      <div class="col-xs-6">
+                        {{cols.url}}
+                      </div>
+                    </div>
+                    <div class="row">
+
+                      <div class="col-xs-12">
+                        <div class="move-button">
+
+                          <button class="btn btn-outline-primary" (click)="getrepo(cols.login)">Details</button>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!--col-xs-8-->
+                </div>
+                <!--row vertical-align-->
+
+                <div class="panel-footer" [hidden]="cols.login !== opendetailname">
+                  <br>
+                  <table class="table table-striped" style="margin-top: 20px;">
+                    <tbody>
+                      <tr *ngFor="let x of allRepos">
+                        <td>{{x.name}}</td>
+                        <td>{{x.language}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+            <!--col-xs-10-->
+          </div>
+        </div>
+
+      </div>
+      <pagination-controls (pageChange)="p1 =$event"></pagination-controls>
+    </div>
+  </div>
+
+
+  <div *ngIf="sortCheck">
+    <div class="container header-container">
+      <div class="col-md-8">
+        <h6>Total Results:{{total}}</h6>
+        <div class="panel panel-primary">
+          <div class="panel-body user-data">
+            <div class="row"
+              *ngFor="let x of sortRecords  | orderBy:'sortAsc' | paginate: {itemsPerPage:3, currentPage: p,totalItems: total}">
+
+              <div class="col-xs-10">
+                <div class="panel-border">
+                  <div class="row vertical-align">
+
+                    <div class="col-xs-4">
+                      <img src="{{x.avatar_url}}" class="rounded-circle imgDiv" alt="Profile Image">
+                    </div>
+                    <div class="col-xs-8 user-data1">
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <br>
+                          <h4>{{ x.login }}</h4>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          Profile URL:
+                        </div>
+                        <div class="col-xs-6">
+                          {{x.url}}
+                        </div>
+                      </div>
+
+                      <div class="row">
+
+                        <div class="col-xs-12">
+                          <div class="move-button">
+
+                            <!-- <button class="btn btn-outline-primary" (click)="buttonPress= ! buttonPress">Details</button> -->
+
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                    </div>
+                    <!--col-xs-8-->
+                  </div>
+                  <!--row vertical-align-->
+
+                </div>
+
+
+              </div>
+              <!--col-xs-10-->
+            </div>
+            <pagination-controls (pageChange)="p =$event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(~../node_modules/font-awesome/css/font-awesome.min.css);
+
+@font-face 
+{
+    font-family: lato;
+    src: url(assets/fonts/Lato-Black.ttf) format("opentype"); 
+    src:url(assets/fonts/Lato-Bold.ttf) format("opentype");
+     src:url(assets/fonts/Lato-BlackItalic.ttf) format("truetype");
+    src:url(assets/fonts/Lato-Bold.ttf) format("truetype");
+    src:url(assets/fonts/Lato-BoldItalic.ttf) format("truetype");
+    src:url(assets/fonts/Lato-Light.ttf) format("truetype");
+    src:url(assets/fonts/Lato-LightItalic.ttf) format("truetype");
+    src:url(assets/fonts/Lato-Regular.ttf) format("truetype");
+    src:url(assets/fonts/Lato-RegularItalic.ttf) format("truetype");
+  }
+  *
+  {
+    font-family: 'lato';
+  }
+.bg-blue
+{
+    background-color: #0066ff;
+}
+ 
+.wrapper 
+{ 
+    position: relative; 
+    margin-top: 7px;
+}
+
+i.fa-search 
+{ 
+    position: absolute; 
+    top: 10px; left: 85%; 
+}
+.navbar 
+{
+    min-height: 65px;
+}
+.navbar-nav
+{
+    margin-left: 20%; 
+}
+.nav-list
+{
+    padding:0 80px; 
+}
+section
+{
+    background-color: #F8F8F8;
+}
+.header-container
+{
+  margin:0 30%;
+  padding: 50px;
+  text-align: center;
+}
+.imgDiv
+{
+    height: 100px;
+    width: 100px;
+}
+.user-data
+{
+    position: relative;
+    left: 40%;
+}
+.user-data1
+{
+    position: relative;
+    left: 5%;
+}
+.user-data2
+{
+    position: relative;
+    left:20px;
+}
+.move-button
+{
+    position: absolute;
+    left: 85%;
+
+}
+.panel-border
+{
+    border: 1px solid #E8E8E8;
+    padding: 25px;
+    width: 500px;
+    height: auto;
+    
+    background-color: white;
+}
